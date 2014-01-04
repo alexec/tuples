@@ -23,6 +23,8 @@ public class ObjectTupleN {
         // Probably incorrect - comparing Object[] arrays with Arrays.equals
         if (!Arrays.equals(values, that.values)) return false;
 
+        int[] a = {1, 2};
+
         return true;
     }
 
@@ -32,5 +34,7 @@ public class ObjectTupleN {
     }
 
     @Override
-    public String toString() {return Arrays.toString(values);}
+    public String toString() {
+        return Arrays.toString(values);
+    }
 }
