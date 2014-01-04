@@ -10,6 +10,10 @@ public final class Tuple1<T0> implements Tuple<Tuple1<T0>> {
         this._0 = _0;
     }
 
+    public static <T0> Tuple1<T0> valueOf(T0 _0) {
+        return new Tuple1<>(_0);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -30,10 +34,6 @@ public final class Tuple1<T0> implements Tuple<Tuple1<T0>> {
     @Override
     public String toString() {
         return "(" + _0 + ')';
-    }
-
-    public static <T0> Tuple1<T0> valueOf(T0 _0) {
-        return new Tuple1<>(_0);
     }
 
     @Override

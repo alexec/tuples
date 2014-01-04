@@ -9,13 +9,13 @@ public final class Tuple0 implements Tuple<Tuple0> {
     protected Tuple0() {
     }
 
+    public static Tuple0 valueOf() {
+        return INSTANCE;
+    }
+
     @Override
     public String toString() {
         return "()";
-    }
-
-    public static Tuple0 valueOf() {
-        return INSTANCE;
     }
 
     @Override

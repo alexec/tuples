@@ -9,6 +9,22 @@ import java.util.function.IntFunction;
  */
 public interface Tuple<T extends Tuple> extends IntFunction, Serializable, Cloneable, Comparable<T> {
 
+    public static Tuple0 valueOf() {
+        return Tuple0.valueOf();
+    }
+
+    public static <T0> Tuple1<T0> valueOf(T0 _0) {
+        return Tuple1.valueOf(_0);
+    }
+
+    public static <T0, T1> Tuple2<T0, T1> valueOf(T0 _0, T1 _1) {
+        return Tuple2.valueOf(_0, _1);
+    }
+
+    public static <T0, T1, T2> Tuple3<T0, T1, T2> valueOf(T0 _0, T1 _1, T2 _2) {
+        return Tuple3.valueOf(_0, _1, _2);
+    }
+
     int size();
 
     @Override
@@ -29,21 +45,5 @@ public interface Tuple<T extends Tuple> extends IntFunction, Serializable, Clone
         }
 
         return 0;
-    }
-
-    public static Tuple0 valueOf() {
-        return Tuple0.valueOf();
-    }
-
-    public static <T0> Tuple1<T0> valueOf(T0 _0) {
-        return Tuple1.valueOf(_0);
-    }
-
-    public static <T0, T1> Tuple2<T0, T1> valueOf(T0 _0, T1 _1) {
-        return Tuple2.valueOf(_0, _1);
-    }
-
-    public static <T0, T1, T2> Tuple3<T0, T1, T2> valueOf(T0 _0, T1 _1, T2 _2) {
-        return Tuple3.valueOf(_0, _1, _2);
     }
 }

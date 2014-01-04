@@ -16,6 +16,10 @@ public final class Tuple4<T0, T1, T2, T3> implements Tuple<Tuple4<T0, T1, T2, T3
         this._3 = _3;
     }
 
+    public static <T0, T1, T2, T3> Tuple4<T0, T1, T2, T3> valueOf(T0 _0, T1 _1, T2 _2, T3 _3) {
+        return new Tuple4<>(_0, _1, _2, _3);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -42,11 +46,7 @@ public final class Tuple4<T0, T1, T2, T3> implements Tuple<Tuple4<T0, T1, T2, T3
 
     @Override
     public String toString() {
-        return "(" + _0 + ',' + _1 + ',' + _2 + ')';
-    }
-
-    public static <T0, T1, T2, T3> Tuple4<T0, T1, T2, T3> valueOf(T0 _0, T1 _1, T2 _2, T3 _3) {
-        return new Tuple4<>(_0, _1, _2, _3);
+        return "(" + _0 + ',' + _1 + ',' + _2 + ',' + _3 + ')';
     }
 
     @Override
