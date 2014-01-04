@@ -3,7 +3,7 @@ package tuples;
 /**
  * @author alex.collins
  */
-public class Tuple3<T0, T1, T2> implements Tuple<Tuple3<T0, T1, T2>> {
+public final class Tuple3<T0, T1, T2> implements Tuple<Tuple3<T0, T1, T2>> {
     public final T0 _0;
     public final T1 _1;
     public final T2 _2;

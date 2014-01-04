@@ -3,7 +3,7 @@ package tuples;
 /**
  * @author alex.collins
  */
-public class Tuple0 implements Tuple<Tuple0> {
+public final class Tuple0 implements Tuple<Tuple0> {
     private static final Tuple0 INSTANCE = new Tuple0();
 
     protected Tuple0() {
