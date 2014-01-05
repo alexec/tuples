@@ -1,9 +1,7 @@
 package tuples.dm;
 
-import org.openjdk.jmh.annotations.GenerateMicroBenchmark;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.Setup;
-import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.Main;
+import org.openjdk.jmh.annotations.*;
 
 /**
  * @author alex.collins
@@ -11,7 +9,7 @@ import org.openjdk.jmh.annotations.State;
 @State(Scope.Benchmark)
 public class JavaMemoryLayoutTest extends AbstractMemoryLayoutTest {
 
-    private static MemoryTrade[] trades;
+    private MemoryTrade[] trades;
 
     @Override
     @GenerateMicroBenchmark
@@ -19,21 +17,22 @@ public class JavaMemoryLayoutTest extends AbstractMemoryLayoutTest {
         super.perfRun();
     }
 
+    public static void main(String[] args) {
+        Main.main(new String[]{"tuples.dm.JavaMemoryLayoutTest.perfRun"});
+    }
+
     @Override
     MemoryTrade get(final int index) {
         return trades[index];
     }
 
-    @Override
     @Setup
     public void init() {
         trades = new MemoryTrade[NUM_RECORDS];
 
-        final byte[] londonStockExchange = {'X', 'L', 'O', 'N'};
-        final int venueCode = pack(londonStockExchange);
+        final int venueCode = pack(new byte[]{'X', 'L', 'O', 'N'});
 
-        final byte[] billiton = {'B', 'H', 'P'};
-        final int instrumentCode = pack(billiton);
+        final int instrumentCode = pack(new byte[]{'B', 'H', 'P'});
 
         for (int i = 0; i < NUM_RECORDS; i++) {
             MemoryTrade trade = new JavaMemoryTrade();
@@ -50,4 +49,8 @@ public class JavaMemoryLayoutTest extends AbstractMemoryLayoutTest {
         }
     }
 
+    @TearDown
+    public void tearDown() throws Exception {
+        trades = null;
+    }
 }

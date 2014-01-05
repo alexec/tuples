@@ -16,7 +16,7 @@ class DirectMemoryTrade implements MemoryTrade {
     private static final long quantityOffset = offset += 8;
     private static final long sideOffset = offset += 8;
 
-    static final long objectSize = offset += 2;
+    static final long OBJECT_SIZE = offset += 2;
 
     private final Unsafe unsafe;
     long objectOffset;
@@ -24,7 +24,6 @@ class DirectMemoryTrade implements MemoryTrade {
     DirectMemoryTrade(Unsafe unsafe) {
         this.unsafe = unsafe;
     }
-
 
     public long getTradeId() {
         return unsafe.getLong(objectOffset + tradeIdOffset);

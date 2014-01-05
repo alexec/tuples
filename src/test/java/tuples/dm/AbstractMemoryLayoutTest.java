@@ -4,7 +4,7 @@ package tuples.dm;
  * @author alex.collins
  */
 abstract class AbstractMemoryLayoutTest {
-    static final int NUM_RECORDS = 50 * 1000 * 1000;
+    static final int NUM_RECORDS = 500_000;
     int i = 0;
 
     public void perfRun() {
@@ -15,13 +15,10 @@ abstract class AbstractMemoryLayoutTest {
         trade.getPrice();
         trade.getQuantity();
 
-
         i = (i + 1) % NUM_RECORDS;
     }
 
     abstract MemoryTrade get(int i);
-
-    public abstract void init();
 
     static int pack(final byte[] value) {
         int result = 0;

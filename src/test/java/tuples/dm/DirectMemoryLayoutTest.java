@@ -1,9 +1,7 @@
 package tuples.dm;
 
-import org.openjdk.jmh.annotations.GenerateMicroBenchmark;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.Setup;
-import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.Main;
+import org.openjdk.jmh.annotations.*;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
@@ -22,25 +20,28 @@ public class DirectMemoryLayoutTest extends AbstractMemoryLayoutTest {
         }
     }
 
+    public static void main(String[] args) {
+        Main.main(new String[]{"tuples.dm.DirectMemoryLayoutTest.perfRun"});
+    }
+
     @Override
     @GenerateMicroBenchmark
     public void perfRun() {
         super.perfRun();
     }
 
-    private static long address;
-    private static final DirectMemoryTrade flyweight = new DirectMemoryTrade(unsafe);
+    private long address;
+    private final DirectMemoryTrade flyweight = new DirectMemoryTrade(unsafe);
 
     @Override
     MemoryTrade get(final int index) {
-        flyweight.objectOffset = address + (index * DirectMemoryTrade.objectSize);
+        flyweight.objectOffset = address + (index * DirectMemoryTrade.OBJECT_SIZE);
         return flyweight;
     }
 
-    @Override
     @Setup
     public void init() {
-        final long requiredHeap = NUM_RECORDS * DirectMemoryTrade.objectSize;
+        final long requiredHeap = NUM_RECORDS * DirectMemoryTrade.OBJECT_SIZE;
         address = unsafe.allocateMemory(requiredHeap);
 
         final byte[] londonStockExchange = {'X', 'L', 'O', 'N'};
@@ -64,7 +65,8 @@ public class DirectMemoryLayoutTest extends AbstractMemoryLayoutTest {
         }
     }
 
-    private static void destroy() {
+    @TearDown
+    public void destroy() {
         unsafe.freeMemory(address);
     }
 }

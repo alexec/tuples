@@ -3,7 +3,7 @@ package tuples.dm;
 /**
  * @author alex.collins
  */
-public interface MemoryTrade {
+interface MemoryTrade {
     long getTradeId();
 
     void setTradeId(long tradeId);
