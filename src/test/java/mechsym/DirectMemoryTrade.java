@@ -1,11 +1,11 @@
-package tuples.dm;
+package mechsym;
 
 import sun.misc.Unsafe;
 
 /**
  * @author alex.collins
  */
-class DirectMemoryTrade implements MemoryTrade {
+class DirectMemoryTrade {
     private static long offset = 0;
 
     private static final long tradeIdOffset = offset += 0;
