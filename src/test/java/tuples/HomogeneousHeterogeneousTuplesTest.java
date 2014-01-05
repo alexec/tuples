@@ -16,6 +16,7 @@ public class HomogeneousHeterogeneousTuplesTest {
         Object[] heteroTuple = {"", Integer.class};
 
         String _0 = (String) heteroTuple[0];
+        @SuppressWarnings("unchecked")
         Class<Integer> _1 = (Class<Integer>) heteroTuple[0];
 
     }

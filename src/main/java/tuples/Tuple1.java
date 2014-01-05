@@ -4,6 +4,8 @@ package tuples;
  * @author alex.collins
  */
 public final class Tuple1<T0> implements Tuple<Tuple1<T0>> {
+
+    private static final long serialVersionUID = 8284822711924819460L;
     public final T0 _0;
 
     protected Tuple1(T0 _0) {
